@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cosmic Nexus 2026 | Register Now</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <style>
+        /* --- CSS Reset & Base Styles --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: radial-gradient(circle at center, #0a1128 0%, #000411 100%);
+            color: #ffffff;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* --- Interactive Canvas Background --- */
+        #stars-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* --- Layout Container --- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            justify-content: center;
+        }
+
+        /* --- Header / Event Info --- */
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            z-index: 10;
+        }
+
+        .event-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3rem;
+            font-weight: 700;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            background: linear-gradient(45deg, #00d2ff, #0066ff, #9b51e0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 30px rgba(0, 102, 255, 0.5);
+            margin-bottom: 10px;
+            animation: pulse Glow 3s infinite alternate;
+        }
+
+        .event-date {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            color: #00d2ff;
+            text-shadow: 0 0 10px rgba(0, 210, 255, 0.5);
+            margin-bottom: 15px;
+        }
+
+        .event-tagline {
+            font-size: 1.1rem;
+            color: #a5b4fc;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* --- Interactive Glassmorphism Form Card --- */
+        .form-card {
+            background: rgba(10, 17, 40, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(0, 210, 255, 0.2);
+            padding: 40px;
+            border-radius: 20px;
+            width: 100%;
+            max-width: 550px;
+            box-shadow: 0 20px 50px rgba(0, 4, 17, 0.7), 
+                        inset 0 0 20px rgba(0, 210, 255, 0.1);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+            z-index: 10;
+        }
+
+        .form-card:hover {
+            border-color: rgba(0, 210, 255, 0.5);
+            box-shadow: 0 20px 50px rgba(0, 4, 17, 0.7), 
+                        0 0 30px rgba(0, 102, 255, 0.2);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        label {
+            display: block;
+            font-size: 0.9rem;
+            color: #00d2ff;
+            margin-bottom: 8px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        input {
+            width: 100%;
+            padding: 14px 16px;
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            color: #fff;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #00d2ff;
+            background: rgba(0, 4, 17, 0.8);
+            box-shadow: 0 0 15px rgba(0, 210, 255, 0.3);
+        }
+
+        /* --- Interactive Custom Button --- */
+        .btn-submit {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(45deg, #0052d4, #4364f7, #6fb1fc);
+            background-size: 200% auto;
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.1rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            box-shadow: 0 0 15px rgba(67, 100, 247, 0.4);
+            text-transform: uppercase;
+        }
+
+        .btn-submit:hover {
+            background-position: right center;
+            box-shadow: 0 0 25px rgba(0, 210, 255, 0.7);
+            transform: translateY(-2px);
+        }
+
+        .btn-submit:active {
+            transform: translateY(1px);
+        }
+
+        /* --- Custom Success Message Area --- */
+        .success-message {
+            display: none;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .success-message h3 {
+            font-family: 'Orbitron', sans-serif;
+            color: #00d2ff;
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+
+        /* --- Responsive Design --- */
+        @media (max-width: 768px) {
+            .event-title { font-size: 2.2rem; }
+            .form-card { padding: 25px; }
+        }
+    </style>
+</head>
+<body>
+
+    <canvas id="stars-canvas"></canvas>
+
+    <div class="container">
+        <header>
+            <h1 class="event-title">Cosmic Nexus</h1>
+            <div class="event-date">July 10, 2026</div>
+            <p class="event-tagline">Join the ultimate stellar gathering of tech minds, innovators, and creators. Secure your orbit today.</p>
+        </header>
+
+        <div class="form-card">
+            <form id="registrationForm" novalidate>
+                <div class="form-group">
+                    <label for="fullName">Full Name</label>
+                    <input type="text" id="fullName" placeholder="Enter your full name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" placeholder="name@domain.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" placeholder="Enter your mobile number" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="collegeId">College / University ID</label>
+                    <input type="text" id="collegeId" placeholder="e.g., CN-2026-X9" required>
+                </div>
+
+                <button type="submit" class="btn-submit">Initiate Registration</button>
+            </form>
+
+            <div class="success-message">
+                <h3>Transmission Received!</h3>
+                <p>Your portal access has been provisioned. Check your email for landing coordinates.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        /* ==========================================
+           1. JavaScript: Dynamic Galaxy Starfield Background
+        ========================================== */
+        const canvas = document.getElementById('stars-canvas');
+        const ctx = canvas.getContext('2d');
+
+        let width = canvas.width = window.innerWidth;
+        let height = canvas.height = window.innerHeight;
+
+        const numStars = 120;
+        const stars = [];
+
+        // Track mouse position for subtle interactive parallax shift
+        let mouseX = 0;
+        let mouseY = 0;
+
+        window.addEventListener('resize', () => {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+        });
+
+        window.addEventListener('mousemove', (e) => {
+            mouseX = (e.clientX - width / 2) * 0.05;
+            mouseY = (e.clientY - height / 2) * 0.05;
+        });
+
+        // Generate Star properties
+        for (let i = 0; i < numStars; i++) {
+            stars.push({
+                x: Math.random() * width,
+                y: Math.random() * height,
+                size: Math.random() * 2 + 0.5,
+                color: Math.random() > 0.4 ? '#00d2ff' : '#4364f7',
+                speedX: (Math.random() - 0.5) * 0.2,
+                speedY: (Math.random() - 0.5) * 0.2
+            });
+        }
+
+        // Animation Loop
+        function animateStars() {
+            ctx.clearRect(0, 0, width, height);
+            
+            stars.forEach(star => {
+                // Move stars slowly
+                star.x += star.speedX;
+                star.y += star.speedY;
+
+                // Infinite loop wrapping logic
+                if (star.x < 0) star.x = width;
+                if (star.x > width) star.x = 0;
+                if (star.y < 0) star.y = height;
+                if (star.y > height) star.y = 0;
+
+                // Render star with mouse interactive drift offset
+                ctx.beginPath();
+                ctx.arc(star.x + mouseX, star.y + mouseY, star.size, 0, Math.PI * 2);
+                ctx.fillStyle = star.color;
+                ctx.shadowBlur = star.size * 4;
+                ctx.shadowColor = star.color;
+                ctx.fill();
+            });
+
+            requestAnimationFrame(animateStars);
+        }
+        animateStars();
+
+        /* ==========================================
+           2. jQuery: Interactive Animations & Validation
+        ========================================== */
+        $(document).ready(function() {
+            // Focus visual flare animations using jQuery
+            $('input').on('focus', function() {
+                $(this).closest('.form-group').find('label').css({
+                    'color': '#ffffff',
+                    'text-shadow': '0 0 8px #00d2ff'
+                });
+            }).on('blur', function() {
+                $(this).closest('.form-group').find('label').css({
+                    'color': '#00d2ff',
+                    'text-shadow': 'none'
+                });
+            });
+
+            // Form Submit Interactivity handling
+            $('#registrationForm').on('submit', function(e) {
+                e.preventDefault(); // Prevent page reload
+                
+                let isValid = true;
+
+                // Basic visual feedback validation wrapper loop
+                $('input').each(function() {
+                    if ($(this).val().trim() === "") {
+                        isValid = false;
+                        $(this).css('border-color', '#ff0055');
+                        // Mini shake animation effect
+                        $(this).animate({marginLeft: '-5px'}, 50).animate({marginLeft: '5px'}, 50).animate({marginLeft: '0px'}, 50);
+                    } else {
+                        $(this).css('border-color', 'rgba(0, 210, 255, 0.5)');
+                    }
+                });
+
+                if (isValid) {
+                    // Smoothly fade out form layout, fade in success content
+                    $('#registrationForm').fadeOut(400, function() {
+                        $('.success-message').fadeIn(500);
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
