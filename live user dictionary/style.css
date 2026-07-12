@@ -1,0 +1,360 @@
+/* ===========================
+   Google Font
+=========================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+/* ===========================
+   Body
+=========================== */
+
+body{
+
+    min-height:100vh;
+
+    background:linear-gradient(135deg,#141E30,#243B55);
+
+    color:white;
+
+}
+
+/* ===========================
+   Heading
+=========================== */
+
+h1{
+
+    font-weight:700;
+
+    letter-spacing:1px;
+
+}
+
+/* ===========================
+   Search
+=========================== */
+
+.form-control{
+
+    border:none;
+
+    border-radius:12px;
+
+    padding:14px;
+
+    font-size:16px;
+
+}
+
+.form-control:focus{
+
+    box-shadow:0 0 12px #00d9ff;
+
+    border:none;
+
+}
+
+/* ===========================
+   Dropdown
+=========================== */
+
+.form-select{
+
+    border:none;
+
+    border-radius:12px;
+
+    padding:14px;
+
+}
+
+.form-select:focus{
+
+    box-shadow:0 0 12px #00d9ff;
+
+}
+
+/* ===========================
+   User Cards
+=========================== */
+
+.user-card{
+
+    background:rgba(255,255,255,.08);
+
+    backdrop-filter:blur(12px);
+
+    border-radius:18px;
+
+    overflow:hidden;
+
+    transition:.4s;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.35);
+
+    height:100%;
+
+}
+
+.user-card:hover{
+
+    transform:translateY(-10px);
+
+    box-shadow:0 20px 40px rgba(0,255,255,.35);
+
+}
+
+/* ===========================
+   Image
+=========================== */
+
+.user-card img{
+
+    width:130px;
+
+    height:130px;
+
+    border-radius:50%;
+
+    margin-top:25px;
+
+    border:5px solid white;
+
+}
+
+/* ===========================
+   Card Body
+=========================== */
+
+.card-body{
+
+    text-align:center;
+
+    padding:25px;
+
+}
+
+.card-title{
+
+    font-size:22px;
+
+    font-weight:600;
+
+    margin-bottom:15px;
+
+}
+
+.card-text{
+
+    color:#ddd;
+
+    margin-bottom:8px;
+
+    font-size:15px;
+
+}
+
+.card-text i{
+
+    color:#00d9ff;
+
+    margin-right:8px;
+
+}
+
+/* ===========================
+   Badge
+=========================== */
+
+.badge{
+
+    font-size:17px;
+
+    border-radius:30px;
+
+}
+
+/* ===========================
+   Loading
+=========================== */
+
+#loading{
+
+    margin-top:80px;
+
+}
+
+/* ===========================
+   Spinner
+=========================== */
+
+.spinner-border{
+
+    width:5rem;
+
+    height:5rem;
+
+}
+
+/* ===========================
+   Retry Button
+=========================== */
+
+#retryBtn{
+
+    border-radius:25px;
+
+    padding:10px 30px;
+
+    transition:.3s;
+
+}
+
+#retryBtn:hover{
+
+    transform:scale(1.08);
+
+}
+
+/* ===========================
+   Alert
+=========================== */
+
+.alert{
+
+    border-radius:15px;
+
+}
+
+/* ===========================
+   Footer Space
+=========================== */
+
+.container{
+
+    padding-bottom:50px;
+
+}
+
+/* ===========================
+   Responsive
+=========================== */
+
+@media(max-width:992px){
+
+.card-title{
+
+font-size:20px;
+
+}
+
+.user-card img{
+
+width:110px;
+
+height:110px;
+
+}
+
+}
+
+@media(max-width:768px){
+
+h1{
+
+font-size:32px;
+
+}
+
+.card-body{
+
+padding:18px;
+
+}
+
+.card-title{
+
+font-size:19px;
+
+}
+
+}
+
+@media(max-width:576px){
+
+h1{
+
+font-size:28px;
+
+}
+
+.badge{
+
+font-size:15px;
+
+}
+
+.form-control{
+
+margin-bottom:10px;
+
+}
+
+.user-card img{
+
+width:100px;
+
+height:100px;
+
+}
+
+.card-title{
+
+font-size:18px;
+
+}
+
+.card-text{
+
+font-size:14px;
+
+}
+
+}
+
+/* ===========================
+   Smooth Animation
+=========================== */
+
+.user-card{
+
+animation:fadeIn .6s ease;
+
+}
+
+@keyframes fadeIn{
+
+from{
+
+opacity:0;
+
+transform:translateY(20px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+}
